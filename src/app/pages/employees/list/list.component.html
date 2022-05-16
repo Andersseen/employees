@@ -1,0 +1,27 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email/th>
+                <th scope="col">Date</th>
+                <th scope="col" class="d-none d-sm-block">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-default" *ngFor="let item of [1,2,3,4]">
+                <th scope="row">John Doe</th>
+                <td>email@gmail.com</td>
+                <td>01/02/2020</td>
+                <td class="btn-group d-none d-sm-block" role="group">
+                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Edit</button>
+                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToInfo(item)">Info</button>
+                    <button type="button" class="btn btn-outline-danger m-1"
+                        (click)="onGoToDelete(item)">Delete</button>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>
