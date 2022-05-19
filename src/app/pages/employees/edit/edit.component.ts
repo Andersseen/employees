@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +9,27 @@ import { Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
   value: any;
-  constructor(private router: Router) {
+  employeeFrom!: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder) {
     const navigation = this.router.getCurrentNavigation();
     this.value = navigation?.extras?.state;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
+  onSave() {
+    console.log('Submit form');
+  }
+  private initForm(): void {
+    this.employeeFrom = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+    });
+  }
+  onGoToBack(): void {
+    this.router.navigate(['list']);
+  }
 }

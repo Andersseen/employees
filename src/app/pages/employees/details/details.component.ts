@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
+  navigationExtras: NavigationExtras = {
+    state: {
+      value: null,
+    },
+  };
   value: any;
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -15,10 +20,10 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onGoToEdit(): void {
-    this.router.navigate(['edit']);
+  onGoToEdit(item: any): void {
+    this.navigationExtras.state!.value = item;
+    this.router.navigate(['edit'], this.navigationExtras);
   }
-
   onGoToBack(): void {
     this.router.navigate(['list']);
   }

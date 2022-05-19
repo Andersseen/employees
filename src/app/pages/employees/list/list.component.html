@@ -9,15 +9,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="table-default" *ngFor="let item of [1,2,3,4]">
-                <th scope="row">John Doe</th>
-                <td>email@gmail.com</td>
-                <td>01/02/2020</td>
+            <tr class="table-default" *ngFor="let person of employees">
+                <th scope="row">{{person.name}}</th>
+                <td>{{person.email}}</td>
+                <td>{{person.date}}</td>
                 <td class="btn-group d-none d-sm-block" role="group">
-                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Edit</button>
-                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToInfo(item)">Info</button>
+                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(person)">Edit</button>
+                    <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToInfo(person)">Info</button>
                     <button type="button" class="btn btn-outline-danger m-1"
-                        (click)="onGoToDelete(item)">Delete</button>
+                        (click)="onGoToDelete(person)">Delete</button>
                 </td>
             </tr>
 
