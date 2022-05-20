@@ -1,6 +1,7 @@
-import { EMPLOYEES, Employe } from './../../../shared/global/mock-employees';
+import { EMPLOYEES } from './../../../shared/global/mock-employees';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Employee } from 'src/app/shared/global/employee.interface';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
     },
   };
 
-  public employees: Employe[] = EMPLOYEES;
+  public employees: Employee[] = EMPLOYEES;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}

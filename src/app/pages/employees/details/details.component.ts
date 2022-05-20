@@ -1,3 +1,4 @@
+import { Employee } from './../../../shared/global/employee.interface';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 
@@ -12,13 +13,17 @@ export class DetailsComponent implements OnInit {
       value: null,
     },
   };
-  value: any;
+  employee: Employee;
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
-    this.value = navigation?.extras?.state;
+    this.employee = navigation?.extras?.state?.value;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (typeof this.employee === 'undefined') {
+      this.router.navigate(['list']);
+    }
+  }
 
   onGoToEdit(item: any): void {
     this.navigationExtras.state!.value = item;

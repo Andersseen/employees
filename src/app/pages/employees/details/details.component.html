@@ -5,17 +5,17 @@
     <div class="card-body">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                Name : <h5>{{value.value.name}}</h5>
+                Name : <h5>{{employee.name}}</h5>
             </li>
             <li class="list-group-item">
-                Email : <h5>{{value.value.email}}</h5>
+                Email : <h5>{{employee.email}}</h5>
             </li>
             <li class="list-group-item">
-                Date: <h5>{{value.value.date}}</h5>
+                Date: <h5>{{employee.date}}</h5>
             </li>
         </ul>
         <div class="btn-group">
-            <button class="btn btn-outline-warning m-1" (click)="onGoToEdit(value.value)">Edit</button>
+            <button class="btn btn-outline-warning m-1" (click)="onGoToEdit(employee)">Edit</button>
             <button class="btn btn-outline-danger m-1">Delete</button>
         </div>
     </div>

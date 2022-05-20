@@ -1,13 +1,14 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EditRoutingModule } from './edit-routing.module';
 import { EditComponent } from './edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+
+import { EmployeeFormModule } from 'src/app/shared/components/employee-form/employee-form.module';
 
 @NgModule({
   declarations: [EditComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, EditRoutingModule],
+  imports: [CommonModule, EditRoutingModule, EmployeeFormModule],
 })
 export class EditModule {}

@@ -1,11 +1,6 @@
-export interface Employe {
-  id: number;
-  name: string;
-  email: string;
-  date: string;
-}
+import { Employee } from './employee.interface';
 
-export const EMPLOYEES: Employe[] = [
+export const EMPLOYEES: Employee[] = [
   {
     id: 1,
     name: 'Dr. Nice',

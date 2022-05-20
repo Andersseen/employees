@@ -1,0 +1,31 @@
+<div class="card mt-2">
+    <div class="card-header">
+        <legend>Edit</legend>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="onSave()" [formGroup]="employeeFrom">
+            <fieldset>
+
+                <div class="form-group">
+
+                    <input type="email" class="form-control" formControlName="name" placeholder="Name">
+
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Date" formControlName="date">
+                </div>
+                <div class="btn-group mt-2">
+                    <button type="submit" class="btn btn-outline-primary m-1">Submit</button>
+                    <button type="button" class="btn btn-outline-danger m-1">Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<button class="btn btn-outline-secondary mt-2" (click)="onGoToBack()">Back</button>
