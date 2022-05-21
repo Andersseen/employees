@@ -1,7 +1,7 @@
-import { EMPLOYEES } from './../../../shared/global/mock-employees';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Employee } from 'src/app/shared/global/employee.interface';
+import { EmployeesService } from 'src/app/shared/services/employees.service';
 
 @Component({
   selector: 'app-list',
@@ -15,20 +15,28 @@ export class ListComponent implements OnInit {
     },
   };
 
-  public employees: Employee[] = EMPLOYEES;
-  constructor(private router: Router) {}
+  public employees!: Employee[];
+  constructor(
+    private router: Router,
+    private employeesService: EmployeesService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.employeesService.getEmployees().subscribe((employee) => {
+      this.employees = employee;
+    });
+  }
 
-  onGoToEdit(item: any): void {
-    this.navigationExtras.state!.value = item;
+  onGoToEdit(employee: Employee): void {
+    this.navigationExtras.state!.value = employee;
     this.router.navigate(['edit'], this.navigationExtras);
   }
-  onGoToInfo(item: any): void {
-    this.navigationExtras.state!.value = item;
+  onGoToInfo(employee: Employee): void {
+    this.navigationExtras.state!.value = employee;
     this.router.navigate(['details'], this.navigationExtras);
   }
-  onGoToDelete(item: any): void {
-    alert('Eliminado');
+  async onGoToDelete(employee: Employee) {
+    const response = await this.employeesService.deleteEmployee(employee);
+    console.log(response);
   }
 }

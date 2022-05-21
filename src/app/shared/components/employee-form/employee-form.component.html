@@ -1,9 +1,32 @@
 <div class="card mt-2">
     <div class="card-header">
-        <legend>Edit</legend>
+        <legend>Form</legend>
     </div>
     <div class="card-body">
-        <form (ngSubmit)="onSave()" [formGroup]="employeeFrom">
+        <form *ngIf="employee"
+            (ngSubmit)="onUpdate(employee, employeeName.value, employeeEmail.value ,employeeDate.value)"
+            [formGroup]="employeeFrom">
+            <fieldset>
+
+                <div class="form-group">
+
+                    <input type="email" class="form-control" formControlName="name" placeholder="Name" #employeeName>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email" #employeeEmail>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Date" formControlName="date" #employeeDate>
+                </div>
+                <div class="btn-group mt-2">
+                    <button type="submit" class="btn btn-outline-primary m-1">Submit</button>
+                    <button type="button" class="btn btn-outline-danger m-1">Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+        <form *ngIf="!employee" (ngSubmit)="onSave()" [formGroup]="employeeFrom">
             <fieldset>
 
                 <div class="form-group">
