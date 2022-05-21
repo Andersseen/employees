@@ -32,11 +32,10 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
   async onSave() {
-    console.log('Submit form', this.employeeFrom.value);
-    const response = await this.employeesService.addEmployee(
-      this.employeeFrom.value
-    );
-    console.log(response);
+    await this.employeesService.addEmployee(this.employeeFrom.value);
+    alert('You create new employee');
+
+    this.router.navigate(['list']);
   }
 
   async onUpdate(
@@ -48,12 +47,13 @@ export class EmployeeFormComponent implements OnInit {
     await this.employeesService.modifyName(employee, name);
     await this.employeesService.modifyEmail(employee, email);
     await this.employeesService.modifyDate(employee, date);
+    alert('You update employee');
+    this.router.navigate(['list']);
   }
 
-  async setName(employee: Employee, name: string) {
-    const response = await this.employeesService.modifyName(employee, name);
-    console.log(response);
-  }
+  // async setName(employee: Employee, name: string) {
+  //   await this.employeesService.modifyName(employee, name);
+  // }
   private initForm(): void {
     this.employeeFrom = this.fb.group({
       name: ['', [Validators.required]],

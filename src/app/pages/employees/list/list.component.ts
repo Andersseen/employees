@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
     this.router.navigate(['details'], this.navigationExtras);
   }
   async onGoToDelete(employee: Employee) {
-    const response = await this.employeesService.deleteEmployee(employee);
-    console.log(response);
+    await this.employeesService.deleteEmployee(employee);
+    alert('You delete employee');
   }
 }
